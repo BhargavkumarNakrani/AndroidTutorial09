@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TextView data_of_file;
     EditText line_Write_into_file;
 
-    final static String FILE_ASSETS="sample_file.txt";
+    final static String FILE_ASSETS="data.json";
     final static String FILE_WRITE="data.txt";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             FileOutputStream fOut = openFileOutput(FILE_WRITE, Context.MODE_PRIVATE);
             fOut.write(line_Write_into_file.getText().toString().getBytes());
             fOut.close();
+            Toast.makeText(this, "File Write Successfully", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
